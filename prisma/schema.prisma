@@ -5,10 +5,22 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider   = "prisma-client"
+  output     = "../lib/generated/prisma"
+  engineType = "client" // enable Prisma ORM without Rust
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Profile {
+  id           String   @id @default(uuid())
+  clerkId      String   @unique
+  firstName    String
+  lastName     String
+  email        String   @unique
+  profileImage String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
