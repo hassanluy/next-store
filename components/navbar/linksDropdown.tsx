@@ -1,29 +1,25 @@
-"use client";
-
-import React from "react";
-import { type DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
-
+"use";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { links } from "@/utils/links";
 import Link from "next/link";
-import { BarcodeIcon, LucideUser } from "lucide-react";
+import { BarcodeIcon } from "lucide-react";
 import { Separator } from "../ui/separator";
 import SignOutBtn from "../auth/SignOutBtn";
 import { SignedIn, SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import UserIcon from "./userIcon";
 function LinksDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
-          <LucideUser />
+          <UserIcon />
           <Separator orientation="vertical" className="mx-2 h-4" />
           <BarcodeIcon />
         </Button>

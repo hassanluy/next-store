@@ -1,12 +1,16 @@
-import { createUserProfileAction } from "@/actions/profileActions";
+import { createUserProfileAction } from "@/features/profile/actions";
 import FormButton from "@/components/form/FormButton";
 import FormContainer from "@/components/form/FormContainer";
 import FormInput from "@/components/form/FormInput";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { User2Icon, UserCircle } from "lucide-react";
+import { UserCircle } from "lucide-react";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-function CreateUserProfile() {
+async function CreateUserProfile() {
+  const user = await currentUser();
+  if (user?.privateMetadata.hasProfile) {
+    redirect("/");
+  }
   return (
     <section>
       <div className="flex my-5 gap-3 items-end">

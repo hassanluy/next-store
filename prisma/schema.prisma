@@ -19,6 +19,7 @@ model Profile {
   clerkId      String   @unique
   firstName    String
   lastName     String
+  username     String   @unique
   email        String   @unique
   profileImage String?
   createdAt    DateTime @default(now())
